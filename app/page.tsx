@@ -1,12 +1,21 @@
-import Hero from "@/components/Hero";
-import Nav from "@/components/Nav";
-import Image from "next/image";
+import AnimatedBackground from "@/sections/AnimatedBackground";
+import CaseStudies from "@/sections/CaseStudies";
+import Contact from "@/sections/Contact";
+import Hero from "@/sections/Hero";
+import Nav from "@/sections/Nav";
+import Services from "@/sections/Services";
+import WorkExperience from "@/sections/WorkExperience";
 
 export default function Home() {
   return (
-<div>
-<Nav/>
-
-  <Hero/>
-</div>  );
+    <div className="relative">
+      <AnimatedBackground />
+      <Nav />
+      <Hero />
+      <WorkExperience />
+      <CaseStudies />
+      <Services />
+      <Contact />
+    </div>
+  );
 }

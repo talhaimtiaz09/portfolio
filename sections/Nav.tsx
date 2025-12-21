@@ -2,14 +2,14 @@ import React from "react";
 
 const Nav = () => {
   return (
-    <nav className="flex items-center justify-between py-6 px-8 font-light">
+    <nav className="flex items-center justify-between py-6 px-8 font-thick">
       {/* Logo */}
       <p className="text-xl tracking-wide cursor-pointer hover:opacity-70 transition-opacity">
         X
       </p>
 
       {/* Navigation */}
-      <ul className="flex space-x-8 text-sm tracking-wide">
+      <ul className="flex space-x-8 text-lg tracking-wide">
         {["Home", "About", "Work", "Contact"].map((item) => (
           <li
             key={item}
