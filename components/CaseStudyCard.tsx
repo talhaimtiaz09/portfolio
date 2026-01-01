@@ -36,7 +36,7 @@ export const CaseStudyCard = ({ item }: { item: any }) => {
       </div>
       
       {/* Subtle White Border on Hover */}
-      <div className="absolute inset-0 border border-white/0 group-hover:border-white/10 transition-colors duration-500 rounded-[40px]" />
+      <div className="absolute inset-0 border border-white/0 group-hover:border-white/10 transition-colors duration-500 " />
     </div>
   );
 };
