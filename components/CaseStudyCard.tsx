@@ -1,54 +1,42 @@
-// components/CaseStudyCard.tsx
-import { motion, useTransform, MotionValue } from 'framer-motion';
+// CaseStudyCard.tsx
+import { motion } from 'framer-motion';
 
-interface CardProps {
-  item: typeof CASE_STUDIES[0];
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-}
-
-export const CaseStudyCard = ({ item, index, total, progress }: CardProps) => {
-  const start = index / total;
-  const end = (index + 1) / total;
-
-  // Transforms
-  const y = useTransform(progress, [start, end], ['120vh', `${index * 5}%`]);
-  const scale = useTransform(progress, [start, start + 0.15, end], [1.02, 1, 0.985]);
-  const rotate = useTransform(progress, [start, start + 0.1], ['1deg', '0deg']);
-  const opacity = useTransform(progress, [start, start + 0.08], [0, 1]);
-  const boxShadow = useTransform(progress, [start, end], [
-    '0px 40px 80px rgba(0,0,0,0.35)',
-    '0px 20px 40px rgba(0,0,0,0.25)',
-  ]);
-
+export const CaseStudyCard = ({ item }: { item: any }) => {
   return (
-    <motion.div
-      style={{ y, scale, rotate, opacity, boxShadow, zIndex: index + 1 }}
-      className={`absolute w-full h-[75vh] rounded-3xl overflow-hidden p-6 cursor-pointer ${item.bgColor} ${item.textColor}`}
-      whileHover={{ y: '-6px', scale: 1.01 }}
-      transition={{ type: 'spring', stiffness: 180, damping: 18 }}
-    >
-      <motion.img
-        src={item.img}
-        alt={item.title}
-        className="absolute inset-0 m-6 object-contain opacity-80"
-        whileHover={{ scale: 1.05, y: -10 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      />
+    <div
+      className="relative shrink-0 w-[450px] h-[700px] rounded-xl overflow-hidden group cursor-pointer bg-[#222]"
 
-      <div className="relative z-10 h-full flex flex-col justify-between">
-        <span className="text-xl font-mono">{item.id}</span>
-        <div className="max-w-sm">
-          <h4 className="text-sm uppercase tracking-widest opacity-70">{item.subtitle}</h4>
-          <h3 className="text-4xl font-bold mt-1">{item.title}</h3>
-          <p className="text-sm mt-4 opacity-90">{item.description}</p>
-          <div className="mt-6 flex items-center gap-2 font-semibold group">
-            <span className="border-b border-current text-sm">Explore {item.title}</span>
-            <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
+    >
+      {/* Background Image with Zoom Effect */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={item.img}
+          alt={item.title}
+          className="w-full h-full object-cover"
+        />
+        {/* Dark overlay for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 h-full p-10 flex flex-col justify-end">
+        <div className="space-y-2">
+          <h3 className="text-3xl font-bold leading-tight tracking-tight">
+            {item.title}
+          </h3>
+          <p className="text-gray-300 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {item.description}
+          </p>
+          <div className="pt-4 overflow-hidden">
+             <span className="text-xs uppercase tracking-[0.2em] font-semibold text-white/60">
+                {item.subtitle}
+             </span>
           </div>
         </div>
       </div>
-    </motion.div>
+      
+      {/* Subtle White Border on Hover */}
+      <div className="absolute inset-0 border border-white/0 group-hover:border-white/10 transition-colors duration-500 rounded-[40px]" />
+    </div>
   );
 };
