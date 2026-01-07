@@ -1,163 +1,126 @@
 "use client";
 
-import SectionLayout from "@/layouts/SectionLayout";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
-// Reusable Input
-const MinimalInput = ({ id, label, type = "text", placeholder }) => (
-  <motion.div
-    className="mb-6"
-    initial={{ opacity: 0, y: 12 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
-  >
-    <label
-      htmlFor={id}
-      className="block text-sm font-medium text-neutral-600 mb-2"
-    >
-      {label}
+const services = [
+  "Mobile App", "Website Design", "Branding", 
+  "Webflow development", "App design", "Graphic design", "Wordpress"
+];
+
+// Reusable Underline Input
+const UnderlineInput = ({ label, placeholder, type = "text" }: any) => (
+  <div className="group flex flex-col w-full">
+    <label className="text-lg font-bold mb-2">
+      {label}<span className="text-neutral-400">*</span>
     </label>
     <input
       type={type}
-      id={id}
-      name={id}
       placeholder={placeholder}
-      className="
-        w-full p-5 text-sm rounded-xl border border-neutral-300 bg-white
-        focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-lime-400
-        shadow-sm hover:shadow-md transition-all duration-300
-      "
+      className="bg-transparent border-b border-neutral-300 py-3 outline-none focus:border-black transition-colors duration-300 placeholder:text-neutral-400"
     />
-  </motion.div>
+  </div>
 );
 
-// Reusable Textarea
-const MinimalTextarea = ({ id, label, placeholder }) => (
-  <motion.div
-    className="mb-8"
-    initial={{ opacity: 0, y: 12 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.55 }}
-  >
-    <label
-      htmlFor={id}
-      className="block text-sm font-medium text-neutral-600 mb-2"
-    >
-      {label}
-    </label>
-    <textarea
-      id={id}
-      name={id}
-      rows={5}
-      placeholder={placeholder}
-      className="
-        w-full p-5 text-sm rounded-xl border border-neutral-300 bg-white
-        focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-lime-400
-        shadow-sm hover:shadow-md transition-all duration-300 resize-none
-      "
-    />
-  </motion.div>
-);
+const ContactForm = () => {
+  const [selectedService, setSelectedService] = useState("Mobile App");
 
-const Contact = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    alert("Form Submitted!");
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
-    <SectionLayout
-      sectionTitle="CONTACT"
-      sectionSubtitle="Let's Connect"
-      sectionIndex={7}
-      sectionColor="bg-neutral-50"
-      stickyHeading
-    >
-      <div className=" mx-auto flex items-start gap-x-4 items-center px-6 md:px-12 py-4">
-        {/* LEFT CONTENT */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="mt-8 text-2xl text-neutral-600 leading-relaxed mb-8 max-w-xl">
-            Whether it’s a startup, SaaS, or high-traffic product — I help turn
-            ideas into{" "}
-            <span className="text-lime-500 font-semibold">
-              reliable, production-ready systems
-            </span>
-            .
-          </p>
-
-          <div className=" text-lg text-neutral-600">
-            <p>✔ Built for performance, not demos</p>
-            <p>✔ Real engineering. No shortcuts.</p>
-            <p>✔ Clear communication & predictable delivery</p>
+    <section className="min-h-screen bg-white py-20 px-6 font-sans text-black">
+      <motion.div 
+        className="max-w-4xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {/* HEADER SECTION */}
+        <motion.div variants={itemVariants} className="text-center mb-16 relative">
+          <h1 className="text-6xl md:text-8xl font-black leading-tight">
+            <span className="text-neutral-400">Say Hi!</span> and tell me about your idea
+          </h1>
+          <div className="flex justify-center mt-4">
+            <svg width="200" height="40" viewBox="0 0 200 40" fill="none" className="md:w-[300px]">
+              <path d="M2 35C40 15 120 15 198 10M198 10L180 2M198 10L185 25" stroke="black" strokeWidth="3" strokeLinecap="round"/>
+            </svg>
           </div>
-
-          <p className="mt-10 text-lg text-neutral-500 italic">
-            “No spam. No sales pressure. Just a real conversation.”
+          <p className="text-xl text-neutral-600 mt-8">
+            Have a nice works? reach out and let's chat.
           </p>
         </motion.div>
 
-        {/* RIGHT FORM */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="
-            relative bg-white rounded-3xl p-10 md:p-14 w-full
-            border border-neutral-200 transition-shadow duration-500
-          "
-        >
-          <motion.form onSubmit={handleSubmit} className="space-y-4">
-            <MinimalInput id="name" label="Your Name" placeholder="John Harry" />
-            <MinimalInput
-              id="email"
-              label="Your Email"
-              type="email"
-              placeholder="john.harry@example.com"
-            />
-            <MinimalInput
-              id="budget"
-              label="Estimated Budget (Optional)"
-              placeholder="$3,000 – $10,000"
-            />
-            <MinimalTextarea
-              id="message"
-              label="Project Details"
-              placeholder="Tell me about your idea, timeline, and goals..."
-            />
+        {/* FORM SECTION */}
+        <div className="space-y-12">
+          {/* Row 1 */}
+          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <UnderlineInput label="Name" placeholder="Hello..." />
+            <UnderlineInput label="Email" placeholder="Where can i reply" type="email" />
+          </motion.div>
+
+          {/* Row 2 */}
+          <motion.div variants={itemVariants}>
+            <UnderlineInput label="Company name" placeholder="Your company or website?" />
+          </motion.div>
+
+          {/* Row 3: Services Tags */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <label className="text-lg font-bold">What's in your mind?<span className="text-neutral-400">*</span></label>
+            <div className="flex flex-wrap gap-3">
+              {services.map((service) => (
+                <motion.button
+                  key={service}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setSelectedService(service)}
+                  className={`px-6 py-3 rounded-full border text-sm transition-all duration-300 ${
+                    selectedService === service 
+                    ? "bg-black text-white border-black" 
+                    : "border-neutral-200 text-neutral-600 hover:border-black"
+                  }`}
+                >
+                  {service}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* SUBMIT SECTION */}
+          <motion.div variants={itemVariants} className="flex flex-col items-end pt-10 relative">
+             {/* Abstract Arrow Decoration */}
+             <div className="absolute right-0 -top-4 hidden md:block">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                  <path d="M10 50L50 10M50 10H20M50 10V40" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+             </div>
 
             <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 30px rgba(132, 204, 22, 0.35)",
-              }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 180, damping: 14 }}
-              type="submit"
-              className="
-                w-full py-5 mt-4 rounded-xl
-                bg-slate-900 text-white font-semibold uppercase tracking-wider
-                transition-all duration-300
-              "
+              whileHover={{ scale: 1.05, backgroundColor: "#333" }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-black text-white px-12 py-5 rounded-full text-xl font-bold tracking-tight shadow-xl"
             >
-              Start the Conversation
+              Send Me
             </motion.button>
-          </motion.form>
-
-          <p className="text-xs text-neutral-500 text-center mt-6">
-            Usually replies within 24 hours • Your data stays private
-          </p>
-        </motion.div>
-      </div>
-    </SectionLayout>
+            <p className="text-neutral-400 text-sm mt-4 italic">
+              I'll must get back to you within 24 hours
+            </p>
+          </motion.div>
+        </div>
+      </motion.div>
+    </section>
   );
 };
 
-export default Contact;
+export default ContactForm;

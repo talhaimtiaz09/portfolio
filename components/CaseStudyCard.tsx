@@ -1,10 +1,10 @@
 // CaseStudyCard.tsx
 import { motion } from 'framer-motion';
 
-export const CaseStudyCard = ({ item }: { item: any }) => {
+export const CaseStudyCard = ({ item}: { item: any}) => {
   return (
     <div
-      className="relative shrink-0 w-[450px] h-[700px] rounded-xl overflow-hidden group cursor-pointer bg-[#222]"
+      className={`relative rounded-xl group cursor-pointer bg-[#222] w-full`}
 
     >
       {/* Background Image with Zoom Effect */}

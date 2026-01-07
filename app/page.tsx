@@ -12,8 +12,8 @@ export default function Home() {
       <AnimatedBackground />
       <Nav />
       <Hero />
-      <WorkExperience />
       <CaseStudies />
+      <WorkExperience />
       <Services />
       <Contact />
     </div>
