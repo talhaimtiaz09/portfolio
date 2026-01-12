@@ -128,7 +128,7 @@ const ExperienceRow = ({ experience, index }: { experience: any; index: number }
 
 export default function WorkExperience() {
   return (
-    <section className="py-20 px-10 w-5/6  mx-auto bg-white">
+    <section className="py-20   mx-auto ">
       <div className="text-left mb-16">
         <h2 className="text-6xl font-black uppercase mb-4">Experience</h2>
         <p className="max-w-xl  text-neutral-500 text-sm">

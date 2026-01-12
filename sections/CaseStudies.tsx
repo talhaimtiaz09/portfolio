@@ -49,41 +49,54 @@ const CaseCard = ({ study, isLarge = false }: { study: any; isLarge?: boolean })
 
 export default function CaseStudies() {
   return (
-    <section className="bg-white h-screen py-24 px-6 md:px-16">
-      <div className="max-w-[1400px] mx-auto">
-        {/* The 2-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-          
-          {/* LEFT COLUMN: Header + 2 Smaller Cards */}
-          <div className="flex flex-col gap-6">
-            {/* 1x1: Text Content */}
-            <div className="py-10 pr-10">
-              <motion.h2 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                className="text-7xl md:text-8xl font-black leading-none mb-6 italic"
-              >
-                FEATURED <br /> WORK
-              </motion.h2>
-              <p className="text-neutral-500 max-w-sm text-lg leading-relaxed">
-                A selection of high-impact projects where engineering meets human-centric design.
-              </p>
-            </div>
+<section className="h-screen py-12 md:px-16 bg-yellow-100 rounded-xl">
+  <div className="max-w-[1600px] mx-auto h-full flex flex-col">
+    
+    {/* Grid: 2-columns left + 1-column right */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1 h-full">
+      
+      {/* LEFT COLUMN: Header + 2 Smaller Cards */}
+      <div className="flex flex-col gap-6 h-full">
+        
+        {/* Header */}
+        <div className="py-10 pr-10 flex-1">
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="text-6xl md:text-8xl font-black leading-tight mb-6 italic"
+          >
+            FEATURED <br /> WORK
+          </motion.h2>
+          <p className="text-neutral-500 max-w-md text-lg md:text-xl leading-relaxed">
+            A selection of high-impact projects where engineering meets human-centric design.
+          </p>
+        </div>
 
-            {/* 2x1: Two Smaller Cases side-by-side */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <CaseCard study={CASE_STUDIES[0]} />
-              <CaseCard study={CASE_STUDIES[1]} />
-            </div>
-          </div>
-
-          {/* RIGHT COLUMN: 1 Large Case Study */}
-          <div className="lg:h-full min-h-[500px]">
-            <CaseCard study={CASE_STUDIES[2]} isLarge={true} />
-          </div>
-          
+        {/* Two smaller cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
+          <CaseCard study={CASE_STUDIES[0]} isLarge />
+          <CaseCard study={CASE_STUDIES[1]} isLarge />
         </div>
       </div>
-    </section>
+
+      {/* RIGHT COLUMN: Large Card */}
+      <div className="lg:h-full min-h-[500px]">
+        <CaseCard study={CASE_STUDIES[2]} isLarge />
+      </div>
+    </div>
+
+    {/* View All Button */}
+    <div className="mt-8 text-center lg:text-left">
+      <a
+        href="/blog"
+        className="inline-block px-8 py-4 bg-black text-white font-semibold text-lg rounded-lg hover:bg-gray-800 transition"
+      >
+        View All Case Studies
+      </a>
+    </div>
+  </div>
+</section>
+
+
   );
 }

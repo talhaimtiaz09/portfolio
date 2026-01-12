@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function AnimatedBackground() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-white">
+    <div className="fixed inset-0 -z-10 overflow-hidden ">
       {/* Soft Glow #1 */}
       <motion.div
         animate={{

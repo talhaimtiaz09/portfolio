@@ -4,15 +4,21 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const services = [
-  "Mobile App", "Website Design", "Branding", 
-  "Webflow development", "App design", "Graphic design", "Wordpress"
+  "Mobile App",
+  "Website Design",
+  "Branding",
+  "Webflow development",
+  "App design",
+  "Graphic design",
+  "Wordpress",
 ];
 
 // Reusable Underline Input
 const UnderlineInput = ({ label, placeholder, type = "text" }: any) => (
   <div className="group flex flex-col w-full">
     <label className="text-lg font-bold mb-2">
-      {label}<span className="text-neutral-400">*</span>
+      {label}
+      <span className="text-neutral-400">*</span>
     </label>
     <input
       type={type}
@@ -36,12 +42,16 @@ const ContactForm = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   return (
-    <section className="min-h-screen bg-white py-20 px-6 font-sans text-black">
-      <motion.div 
+    <section className="min-h-screen py-20 px-6 font-sans text-black relative">
+      <motion.div
         className="max-w-4xl mx-auto"
         variants={containerVariants}
         initial="hidden"
@@ -49,36 +59,69 @@ const ContactForm = () => {
         viewport={{ once: true }}
       >
         {/* HEADER SECTION */}
-        <motion.div variants={itemVariants} className="text-center mb-16 relative">
+        <motion.div
+          variants={itemVariants}
+          className="text-center mb-16 relative"
+        >
+       
+
           <h1 className="text-6xl md:text-8xl font-black leading-tight">
-            <span className="text-neutral-400">Say Hi!</span> and tell me about your idea
+            <span className="text-neutral-400">Say Hi!</span> and tell me about
+            your idea
           </h1>
           <div className="flex justify-center mt-4">
-            <svg width="200" height="40" viewBox="0 0 200 40" fill="none" className="md:w-[300px]">
-              <path d="M2 35C40 15 120 15 198 10M198 10L180 2M198 10L185 25" stroke="black" strokeWidth="3" strokeLinecap="round"/>
+            <svg
+              width="200"
+              height="40"
+              viewBox="0 0 200 40"
+              fill="none"
+              className="md:w-[300px]"
+            >
+              <path
+                d="M2 35C40 15 120 15 198 10M198 10L180 2M198 10L185 25"
+                stroke="black"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
             </svg>
           </div>
           <p className="text-xl text-neutral-600 mt-8">
             Have a nice works? reach out and let's chat.
           </p>
+
+   
+
+          
         </motion.div>
 
         {/* FORM SECTION */}
-        <div className="space-y-12">
+        <div className="space-y-12 bg-white p-12 rounded-3xl border-[1px] border-gray-300">
           {/* Row 1 */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <motion.div
+            variants={itemVariants}
+            className="grid grid-cols-1 md:grid-cols-2 gap-12"
+          >
             <UnderlineInput label="Name" placeholder="Hello..." />
-            <UnderlineInput label="Email" placeholder="Where can i reply" type="email" />
+            <UnderlineInput
+              label="Email"
+              placeholder="Where can i reply"
+              type="email"
+            />
           </motion.div>
 
           {/* Row 2 */}
           <motion.div variants={itemVariants}>
-            <UnderlineInput label="Company name" placeholder="Your company or website?" />
+            <UnderlineInput
+              label="Company name"
+              placeholder="Your company or website?"
+            />
           </motion.div>
 
           {/* Row 3: Services Tags */}
           <motion.div variants={itemVariants} className="space-y-6">
-            <label className="text-lg font-bold">What's in your mind?<span className="text-neutral-400">*</span></label>
+            <label className="text-lg font-bold">
+              What's in your mind?<span className="text-neutral-400">*</span>
+            </label>
             <div className="flex flex-wrap gap-3">
               {services.map((service) => (
                 <motion.button
@@ -86,9 +129,9 @@ const ContactForm = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedService(service)}
                   className={`px-6 py-3 rounded-full border text-sm transition-all duration-300 ${
-                    selectedService === service 
-                    ? "bg-black text-white border-black" 
-                    : "border-neutral-200 text-neutral-600 hover:border-black"
+                    selectedService === service
+                      ? "bg-black text-white border-black"
+                      : "border-neutral-200 text-neutral-600 hover:border-black"
                   }`}
                 >
                   {service}
@@ -98,13 +141,22 @@ const ContactForm = () => {
           </motion.div>
 
           {/* SUBMIT SECTION */}
-          <motion.div variants={itemVariants} className="flex flex-col items-end pt-10 relative">
-             {/* Abstract Arrow Decoration */}
-             <div className="absolute right-0 -top-4 hidden md:block">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                  <path d="M10 50L50 10M50 10H20M50 10V40" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-             </div>
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col items-end pt-10 relative"
+          >
+            {/* Abstract Arrow Decoration */}
+            <div className="absolute right-0 -top-4 hidden md:block">
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <path
+                  d="M10 50L50 10M50 10H20M50 10V40"
+                  stroke="black"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
 
             <motion.button
               whileHover={{ scale: 1.05, backgroundColor: "#333" }}
@@ -118,6 +170,15 @@ const ContactForm = () => {
             </p>
           </motion.div>
         </div>
+                    <div
+              className="absolute -z-10 top-10 left-1/10 h-[800px] w-[800px] rounded-full 
+              bg-red-500/40 blur-[700px]"
+            ></div>
+
+            <div
+              className="absolute -z-10 -bottom-32 -right-32 h-[400px] w-[400px] rounded-full 
+              bg-orange-400/40 blur-[120px]"
+            ></div>
       </motion.div>
     </section>
   );

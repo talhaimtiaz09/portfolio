@@ -40,13 +40,10 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative w-full h-screen grid grid-cols-4 bg-white overflow-hidden p-10"
+      className="relative w-full h-screen grid grid-cols-4 overflow-hidden py-10"
     >
 
-<div className="absolute z-20 w-full h-full ">
-      <div className="bg-black w-[2px] h-screen"></div>
 
-</div>
       {/* LEFT CONTENT */}
       <motion.div
         className="col-span-3"
@@ -86,9 +83,9 @@ const Hero = () => {
         {/* NAME */}
         <motion.h1
           variants={item}
-          className="absolute bottom-40 text-4xl"
+          className={`absolute bottom-40 text-6xl ${greatVibes.className}`}
         >
-          TALHA IMTIAZ
+          Talha zimtiaz
         </motion.h1>
       </motion.div>
 

@@ -9,7 +9,7 @@ export const ServiceAccordionItem = ({ service }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-neutral-200 py-6">
+    <div className="border-[1px] border-black my-2 p-10 bg-white">
       {/* Header */}
       <button
         onClick={() => setOpen(!open)}

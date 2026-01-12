@@ -55,12 +55,7 @@ const servicesData = [
 
 export default function Services() {
   return (
-      <SectionLayout
-      sectionTitle="END TO END DEVELOPMENT"
-      sectionSubtitle="Services"
-      sectionIndex={7}
-      sectionColor="bg-neutral-50"
-      stickyHeading={true}
+      <div className="mx-auto py-4"
     >
 
     {/* <section className="h-screen px-6 py-32 mt-20 text-neutral-900"> */}
@@ -80,6 +75,6 @@ export default function Services() {
         </motion.div>
       {/* </div> */}
     {/* </section> */}
-          </SectionLayout>
+          </div>
   );
 }

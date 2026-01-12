@@ -2,7 +2,7 @@ import React from "react";
 
 const Nav = () => {
   return (
-    <nav className="flex items-center justify-between py-6 px-8 font-thick">
+    <nav className="flex items-center justify-between py-6 font-thick">
       {/* Logo */}
       <p className="text-xl tracking-wide cursor-pointer hover:opacity-70 transition-opacity">
         X

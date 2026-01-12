@@ -1,5 +1,20 @@
 @import "tailwindcss";
-/* 
-body{
 
-background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);} */
+/* Subtle vertical grid background */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.1) 0,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent calc(100% / 6)
+  );
+  background-size: calc(100% / 2) 100%;
+
+}

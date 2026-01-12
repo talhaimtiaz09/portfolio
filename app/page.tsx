@@ -8,8 +8,8 @@ import WorkExperience from "@/sections/WorkExperience";
 
 export default function Home() {
   return (
-    <div className="relative">
-      <AnimatedBackground />
+    <div className="relative px-20">
+      {/* <AnimatedBackground /> */}
       <Nav />
       <Hero />
       <CaseStudies />
